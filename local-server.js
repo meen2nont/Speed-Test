@@ -34,7 +34,8 @@ const server = http.createServer((req, res) => {
     // Handle /ip route
     if (req.url === '/ip') {
         res.writeHead(200, { 'Content-Type': 'text/plain' });
-        res.end(req.socket.remoteAddress);
+        const ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
+        res.end(ip);
         return;
     }
 
