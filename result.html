@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speed Test Result</title>
+    <link href="assets/css/result-summary.css" rel="stylesheet" type="text/css" />
+    <style>
+        /* CSS moved to assets/css/result-summary.css */
+    </style>
+</head>
+
+<body>
+
+    <div id="result-summary-overlay" class="visible">
+        <div class="result-card">
+            <h1 class="result-title">Internet Speed Test Result</h1>
+
+            <div class="result-grid">
+                <div class="result-item">
+                    <div class="result-label"><span class="icon icon-down"></span> Download</div>
+                    <div class="result-value" id="res-download">--</div>
+                    <div class="result-unit" id="res-download-unit">Mbps</div>
+                </div>
+                <div class="result-item">
+                    <div class="result-label"><span class="icon icon-jitter"></span> Jitter</div>
+                    <div class="result-value" id="res-jitter">--</div>
+                    <div class="result-unit" id="res-jitter-unit">ms</div>
+                </div>
+                <div class="result-item">
+                    <div class="result-label"><span class="icon icon-ping"></span> Ping</div>
+                    <div class="result-value" id="res-ping">--</div>
+                    <div class="result-unit" id="res-ping-unit">ms</div>
+                </div>
+                <div class="result-item">
+                    <div class="result-label"><span class="icon icon-up"></span> Upload</div>
+                    <div class="result-value" id="res-upload">--</div>
+                    <div class="result-unit" id="res-upload-unit">Mbps</div>
+                </div>
+            </div>
+
+            <div class="result-meta" id="res-date"></div>
+
+            <div class="result-server-info">
+                <div class="server-item">
+                    <span class="server-icon">
+                        <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2"
+                            fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect>
+                            <rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect>
+                            <line x1="6" y1="6" x2="6.01" y2="6"></line>
+                            <line x1="6" y1="18" x2="6.01" y2="18"></line>
+                        </svg>
+                    </span>
+                    <strong>Server</strong>
+                    <span id="res-server-name">Localhost</span>
+                </div>
+                <div class="server-item">
+                    <span class="server-icon">
+                        <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2"
+                            fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                    </span>
+                    <strong>Carrier</strong>
+                    <span id="res-carrier">Private Network</span>
+                </div>
+            </div>
+
+            <div class="action-buttons">
+                <button onclick="window.location.href='/'" class="btn-restart">Test Again</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const params = new URLSearchParams(window.location.search);
+            document.getElementById('res-download').textContent = params.get('dl') || '--';
+            document.getElementById('res-download-unit').textContent = params.get('dlUnit') || 'Mbps';
+
+            document.getElementById('res-upload').textContent = params.get('ul') || '--';
+            document.getElementById('res-upload-unit').textContent = params.get('ulUnit') || 'Mbps';
+
+            document.getElementById('res-ping').textContent = params.get('ping') || '--';
+            document.getElementById('res-jitter').textContent = params.get('jitter') || '--';
+            document.getElementById('res-carrier').textContent = params.get('ip') || 'Private Network';
+
+            const now = new Date();
+            document.getElementById('res-date').textContent = now.toLocaleString('en-US', { dateStyle: 'medium', timeStyle: 'short' });
+        });
+    </script>
+</body>
+
+</html>
