@@ -1,7 +1,7 @@
 
 
 // Add or Remove Server --> Automatically choose the one with the least latency
-var openSpeedTestServerList = [
+var iCafeTIKSpeedTestServerList = [
     { "ServerName": "Home", "Download": "downloading", "Upload": "upload", "ServerIcon": "DefaultIcon" }
 ];
 
@@ -90,5 +90,5 @@ function ostOnload() {
 
 var openChannel = "dev";
 var get_IP = "/ip";
-var OpenSpeedTestdb = "";
+var iCafeTIKSpeedTestdb = "";
 var webIP = "/ip";

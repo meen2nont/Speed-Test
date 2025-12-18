@@ -1,6 +1,6 @@
 # Self-Hosted Speed Test
 
-A lightweight, privacy-focused, and mobile-optimized HTML5 Network Performance Estimation Tool based on OpenSpeedTest™.
+A lightweight, privacy-focused, and mobile-optimized HTML5 Network Performance Estimation Tool based on iCafeTIKSpeedTest™.
 
 ## Key Features
 
@@ -64,4 +64,4 @@ Copy all files to your web server's root directory (e.g., `/var/www/html`).
 
 ## License
 
-Based on OpenSpeedTest™. Free and Open-Source Software (FOSS).
+Based on iCafeTIKSpeedTest™. Free and Open-Source Software (FOSS).

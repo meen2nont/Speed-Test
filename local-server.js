@@ -40,7 +40,7 @@ const server = http.createServer((req, res) => {
     }
 
     // Handle Upload Test (POST /upload)
-    // OpenSpeedTest sends data to /upload, we just need to accept it efficiently.
+    // iCafeTIKSpeedTest sends data to /upload, we just need to accept it efficiently.
     if (req.url.startsWith('/upload') && req.method === 'POST') {
         // Discard data efficiently
         req.on('data', () => { });

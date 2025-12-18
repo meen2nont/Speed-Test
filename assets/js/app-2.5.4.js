@@ -1,11 +1,11 @@
 
 window.onload = function () {
-  var appSVG = document.getElementById("OpenSpeedTest-UI");
+  var appSVG = document.getElementById("iCafeTIKSpeedTest-UI");
   appSVG.parentNode.replaceChild(appSVG.contentDocument.documentElement, appSVG);
   ostOnload();
-  OpenSpeedTest.Start();
+  iCafeTIKSpeedTest.Start();
 };
-(function (OpenSpeedTest) {
+(function (iCafeTIKSpeedTest) {
   var Status;
   var ProG;
   var Callback = function (callback) {
@@ -47,7 +47,7 @@ window.onload = function () {
     t--;
     return c * (t * t * t + 1) + b;
   };
-  var openSpeedtestShow = function () {
+  var iCafeTIKSpeedTestShow = function () {
     this.YourIP = _("YourIP");
     this.ipDesk = _("ipDesk");
     this.ipMob = _("ipMob");
@@ -77,7 +77,7 @@ window.onload = function () {
     this.intro_Desk = _("intro-Desk");
     this.intro_Mob = _("intro-Mob");
     this.loader = _("loading_app");
-    this.OpenSpeedtest = _("OpenSpeedtest");
+    this.iCafeTIKSpeedTest = _("iCafeTIKSpeedTest");
     this.mainGaugebg_Desk = _("mainGaugebg-Desk");
     this.mainGaugeBlue_Desk = _("mainGaugeBlue-Desk");
     this.mainGaugeWhite_Desk = _("mainGaugeWhite-Desk");
@@ -105,7 +105,7 @@ window.onload = function () {
     this.measurements = [];
     this.points = [];
   };
-  openSpeedtestShow.prototype.reset = function () {
+  iCafeTIKSpeedTestShow.prototype.reset = function () {
     this.element = "";
     this.chart = "";
     this.polygon = "";
@@ -118,7 +118,7 @@ window.onload = function () {
     this.measurements = [];
     this.points = [];
   };
-  openSpeedtestShow.prototype.ip = function () {
+  iCafeTIKSpeedTestShow.prototype.ip = function () {
     var Self = this;
     if (Self.ipDesk.el.style.display === "block") {
       Self.ipDesk.el.style.display = "none";
@@ -128,22 +128,22 @@ window.onload = function () {
       Self.ipMob.el.style.display = "block";
     }
   };
-  openSpeedtestShow.prototype.prePing = function () {
+  iCafeTIKSpeedTestShow.prototype.prePing = function () {
     this.loader.fade("out", 500);
-    this.OpenSpeedtest.fade("in", 1000);
+    this.iCafeTIKSpeedTest.fade("in", 1000);
   };
-  openSpeedtestShow.prototype.app = function () {
+  iCafeTIKSpeedTestShow.prototype.app = function () {
     this.loader.fade("out", 500, this.ShowAppIntro());
   };
-  openSpeedtestShow.prototype.ShowAppIntro = function () {
-    this.OpenSpeedtest.fade("in", 1000);
+  iCafeTIKSpeedTestShow.prototype.ShowAppIntro = function () {
+    this.iCafeTIKSpeedTest.fade("in", 1000);
   };
-  openSpeedtestShow.prototype.userInterface = function () {
+  iCafeTIKSpeedTestShow.prototype.userInterface = function () {
     var Self = this;
     this.intro_Desk.fade("out", 1000);
     this.intro_Mob.fade("out", 1000, this.ShowUI());
   };
-  openSpeedtestShow.prototype.ShowUI = function () {
+  iCafeTIKSpeedTestShow.prototype.ShowUI = function () {
     this.UI_Desk.fade("in", 1000);
     this.UI_Mob.fade("in", 1000, uiLoaded);
     function uiLoaded(argument) {
@@ -151,7 +151,7 @@ window.onload = function () {
       console.log("Developed by Vishnu. Email --\x3e me@vishnu.pro");
     }
   };
-  openSpeedtestShow.prototype.Symbol = function (dir) {
+  iCafeTIKSpeedTestShow.prototype.Symbol = function (dir) {
     if (dir == 0) {
       this.downSymbolMob.el.style.display = "block";
       this.downSymbolDesk.el.style.display = "block";
@@ -171,7 +171,7 @@ window.onload = function () {
       this.upSymbolDesk.el.style.display = "none";
     }
   };
-  openSpeedtestShow.prototype.Graph = function (speed, select) {
+  iCafeTIKSpeedTestShow.prototype.Graph = function (speed, select) {
     if (!("remove" in Element.prototype)) {
       Element.prototype.remove = function () {
         if (this.parentNode) {
@@ -246,7 +246,7 @@ window.onload = function () {
       createChart(Graphelement, speed);
     }
   };
-  openSpeedtestShow.prototype.progress = function (Switch, duration) {
+  iCafeTIKSpeedTestShow.prototype.progress = function (Switch, duration) {
     var Self = this;
     var Stop = duration;
     var Stage = Switch;
@@ -271,7 +271,7 @@ window.onload = function () {
       }
     }, 14);
   };
-  openSpeedtestShow.prototype.mainGaugeProgress = function (currentSpeed) {
+  iCafeTIKSpeedTestShow.prototype.mainGaugeProgress = function (currentSpeed) {
     var Self = this;
     var speed = currentSpeed;
     if (speed < 0) {
@@ -300,14 +300,14 @@ window.onload = function () {
       this.mainGaugeBlue_Desk.el.style.strokeDashoffset = 681.1;
     }
   };
-  openSpeedtestShow.prototype.showStatus = function (e) {
+  iCafeTIKSpeedTestShow.prototype.showStatus = function (e) {
     this.oDoLiveStatus.el.textContent = e;
   };
-  openSpeedtestShow.prototype.ConnectionError = function () {
+  iCafeTIKSpeedTestShow.prototype.ConnectionError = function () {
     this.ConnectErrorMob.el.style.display = "block";
     this.ConnectErrorDesk.el.style.display = "block";
   };
-  openSpeedtestShow.prototype.uploadResult = function (upload) {
+  iCafeTIKSpeedTestShow.prototype.uploadResult = function (upload) {
     var unit = "Mbps";
     if (upload >= 1000) {
       upload = upload / 1000;
@@ -330,7 +330,7 @@ window.onload = function () {
       this.upRestxt.el.style.fontSize = "18px";
     }
   };
-  openSpeedtestShow.prototype.pingResults = function (data, Display) {
+  iCafeTIKSpeedTestShow.prototype.pingResults = function (data, Display) {
     var ShowData = data;
     if (Display === "Ping") {
       if (ShowData >= 1 && ShowData < 10000) {
@@ -348,7 +348,7 @@ window.onload = function () {
       this.oDoLiveSpeed.el.textContent = ShowData;
     }
   };
-  openSpeedtestShow.prototype.downloadResult = function (download) {
+  iCafeTIKSpeedTestShow.prototype.downloadResult = function (download) {
     var unit = "Mbps";
     if (download >= 1000) {
       download = download / 1000;
@@ -371,7 +371,7 @@ window.onload = function () {
       this.downResult.el.style.fontSize = "18px";
     }
   };
-  openSpeedtestShow.prototype.jitterResult = function (data, Display) {
+  iCafeTIKSpeedTestShow.prototype.jitterResult = function (data, Display) {
     var ShowData = data;
     if (Display === "Jitter") {
       if (ShowData >= 1 && ShowData < 10000) {
@@ -392,7 +392,7 @@ window.onload = function () {
       }
     }
   };
-  openSpeedtestShow.prototype.LiveSpeed = function (data, Display) {
+  iCafeTIKSpeedTestShow.prototype.LiveSpeed = function (data, Display) {
     var ShowData = data;
     var unit = "Mbps";
 
@@ -480,7 +480,7 @@ window.onload = function () {
       }
     }
   };
-  openSpeedtestShow.prototype.GaugeProgresstoZero = function (currentSpeed, status) {
+  iCafeTIKSpeedTestShow.prototype.GaugeProgresstoZero = function (currentSpeed, status) {
     var speed = currentSpeed;
     var Self = this;
     var duration = 3;
@@ -501,7 +501,7 @@ window.onload = function () {
       }, 16);
     }
   };
-  openSpeedtestShow.prototype.getNonlinearDegree = function (mega_bps) {
+  iCafeTIKSpeedTestShow.prototype.getNonlinearDegree = function (mega_bps) {
     var i = 0;
     if (0 == mega_bps || mega_bps <= 0 || isNaN(mega_bps)) {
       return 0;
@@ -515,17 +515,17 @@ window.onload = function () {
     }
     return this.scale[this.scale.length - 1].degree;
   };
-  var openSpeedtestGet = function () {
+  var iCafeTIKSpeedTestGet = function () {
     this.OverAllTimeAvg = window.performance.now();
     this.SpeedSamples = [];
     this.FinalSpeed;
   };
-  openSpeedtestGet.prototype.reset = function () {
+  iCafeTIKSpeedTestGet.prototype.reset = function () {
     this.OverAllTimeAvg = window.performance.now();
     this.SpeedSamples = [];
     this.FinalSpeed = 0;
   };
-  openSpeedtestGet.prototype.ArraySum = function (Arr) {
+  iCafeTIKSpeedTestGet.prototype.ArraySum = function (Arr) {
     var array = Arr;
     if (array) {
       var sum = array.reduce(function (A, B) {
@@ -538,7 +538,7 @@ window.onload = function () {
       return 0;
     }
   };
-  openSpeedtestGet.prototype.AvgSpeed = function (Livespeed, Start, duration) {
+  iCafeTIKSpeedTestGet.prototype.AvgSpeed = function (Livespeed, Start, duration) {
     var Self = this;
     this.timeNow = (window.performance.now() - this.OverAllTimeAvg) / 1000;
     this.FinalSpeed;
@@ -552,7 +552,7 @@ window.onload = function () {
     }
     return Self.FinalSpeed;
   };
-  openSpeedtestGet.prototype.uRandom = function (size, callback) {
+  iCafeTIKSpeedTestGet.prototype.uRandom = function (size, callback) {
     var size = size;
     var randomValue = new Uint32Array(262144);
     function getRandom() {
@@ -572,15 +572,15 @@ window.onload = function () {
     };
     return new Blob(genData(size), { type: "application/octet-stream" }, Callback(callback));
   };
-  openSpeedtestGet.prototype.addEvt = function (o, e, f) {
+  iCafeTIKSpeedTestGet.prototype.addEvt = function (o, e, f) {
     o.addEventListener(e, f);
   };
-  openSpeedtestGet.prototype.remEvt = function (o, e, f) {
+  iCafeTIKSpeedTestGet.prototype.remEvt = function (o, e, f) {
     o.removeEventListener(e, f);
   };
-  var openSpeedtestEngine = function () {
-    var Get = new openSpeedtestGet();
-    var Show = new openSpeedtestShow();
+  var iCafeTIKSpeedTestEngine = function () {
+    var Get = new iCafeTIKSpeedTestGet();
+    var Show = new iCafeTIKSpeedTestShow();
     Show.app();
     var SendData;
     var myhostName = location.hostname;
@@ -711,7 +711,7 @@ window.onload = function () {
           severAddress = getCommand.h;
         }
         if (isValidHttpUrl(severAddress)) {
-          openSpeedTestServerList = [{ ServerName: "Home", Download: severAddress + "/downloading", Upload: severAddress + "/upload", ServerIcon: "DefaultIcon", },];
+          iCafeTIKSpeedTestServerList = [{ ServerName: "Home", Download: severAddress + "/downloading", Upload: severAddress + "/upload", ServerIcon: "DefaultIcon", },];
         }
       }
     }
@@ -781,21 +781,21 @@ window.onload = function () {
         }
       }
     }
-    var OpenSpeedTestRun = parseInt(getCommand.run);
-    var OpenSpeedTestRunR = parseInt(getCommand.r);
-    var OpenSpeedTestStart;
+    var iCafeTIKSpeedTestRun = parseInt(getCommand.run);
+    var iCafeTIKSpeedTestRunR = parseInt(getCommand.r);
+    var iCafeTIKSpeedTestStart;
     if (enableRun) {
       if (typeof getCommand.run === "string" || typeof getCommand.r === "string") {
-        if (OpenSpeedTestRun > 0) {
-          OpenSpeedTestStart = OpenSpeedTestRun;
-        } else if (OpenSpeedTestRunR > 0) {
-          OpenSpeedTestStart = OpenSpeedTestRunR;
+        if (iCafeTIKSpeedTestRun > 0) {
+          iCafeTIKSpeedTestStart = iCafeTIKSpeedTestRun;
+        } else if (iCafeTIKSpeedTestRunR > 0) {
+          iCafeTIKSpeedTestStart = iCafeTIKSpeedTestRunR;
         } else {
-          OpenSpeedTestStart = 0;
+          iCafeTIKSpeedTestStart = 0;
         }
       }
     }
-    if (OpenSpeedTestStart >= 0) {
+    if (iCafeTIKSpeedTestStart >= 0) {
       if (launch) {
         runTasks();
       }
@@ -864,11 +864,11 @@ window.onload = function () {
         removeEvts();
         addEvent = false;
       }
-      if (OpenSpeedTestStart >= 0) {
+      if (iCafeTIKSpeedTestStart >= 0) {
         launch = false;
         Show.userInterface();
         init = false;
-        var AutoTme = Math.ceil(Math.abs(OpenSpeedTestStart));
+        var AutoTme = Math.ceil(Math.abs(iCafeTIKSpeedTestStart));
         Show.showStatus("Automatic Test Starts in ...");
         var autoTest = setInterval(countDownF, 1000);
       }
@@ -880,12 +880,12 @@ window.onload = function () {
           if (AutoTme <= 0) {
             clearInterval(autoTest);
             launch = true;
-            OpenSpeedTestStart = undefined;
+            iCafeTIKSpeedTestStart = undefined;
             runTasks();
           }
         }
       }
-      if (openSpeedTestServerList === "fetch" && launch === true) {
+      if (iCafeTIKSpeedTestServerList === "fetch" && launch === true) {
         launch = false;
         Show.showStatus("Fetching Server Info..");
         ServerConnect(6);
@@ -913,7 +913,7 @@ window.onload = function () {
       }
     }
     var osttm = "\u2122";
-    var myname = "OpenSpeedTest";
+    var myname = "iCafeTIKSpeedTest";
     var com = ".com";
     var ost = myname + osttm;
     function hiEnter(e) {
@@ -942,9 +942,9 @@ window.onload = function () {
         Show.userInterface();
         init = false;
       }
-      OpenSpeedtest();
+      iCafeTIKSpeedTest();
     }
-    function OpenSpeedtest() {
+    function iCafeTIKSpeedTest() {
       if (openChannel === "widget" || openChannel === "web") {
         ServerConnect(1);
       }
@@ -1290,15 +1290,15 @@ window.onload = function () {
     var finalPing = [];
     var pingServer = [];
     var finalJitter = [];
-    var pingSendLength = openSpeedTestServerList.length;
+    var pingSendLength = iCafeTIKSpeedTestServerList.length;
     function readServerList() {
-      pingSendLength = openSpeedTestServerList.length;
+      pingSendLength = iCafeTIKSpeedTestServerList.length;
       Status = "Ping";
       performance.clearResourceTimings();
       if (pingSendStatus < pingSendLength - 1) {
         pingSendStatus++;
         if (statusPingTest != "Stop") {
-          sendPingRequest(openSpeedTestServerList[pingSendStatus], readServerList);
+          sendPingRequest(iCafeTIKSpeedTestServerList[pingSendStatus], readServerList);
         }
       } else {
         if (pingServer.length >= 1) {
@@ -1424,7 +1424,7 @@ window.onload = function () {
     var ServerConnect = function (auth) {
       var Self = this;
       var xhr = new XMLHttpRequest();
-      var url = OpenSpeedTestdb;
+      var url = iCafeTIKSpeedTestdb;
       if (auth == 1) {
         url = webIP;
       }
@@ -1453,7 +1453,7 @@ window.onload = function () {
             }, 1500);
           }
           if (auth == 6) {
-            openSpeedTestServerList = JSON.parse(return_data);
+            iCafeTIKSpeedTestServerList = JSON.parse(return_data);
             launch = true;
             runTasks();
           }
@@ -1477,7 +1477,7 @@ window.onload = function () {
       xhr.send(logData);
     };
   };
-  OpenSpeedTest.Start = function () {
-    new openSpeedtestEngine();
+  iCafeTIKSpeedTest.Start = function () {
+    new iCafeTIKSpeedTestEngine();
   };
-})(window.OpenSpeedTest = window.OpenSpeedTest || {});
+})(window.iCafeTIKSpeedTest = window.iCafeTIKSpeedTest || {});

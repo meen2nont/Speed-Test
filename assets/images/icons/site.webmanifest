@@ -1,5 +1,5 @@
 {
-    "name": "OpenSpeedTest",
+    "name": "iCafeTIKSpeedTest",
     "short_name": "Speed Test",
     "icons": [
         {
@@ -17,6 +17,4 @@
     "background_color": "#ffffff",
     "display": "standalone",
     "start_url": "/"
-  
- 
 }

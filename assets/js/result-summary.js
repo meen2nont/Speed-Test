@@ -93,7 +93,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // Main Logic: Wait for SVG Object to Load
-    const svgObj = document.getElementById('OpenSpeedTest-UI');
+    const svgObj = document.getElementById('iCafeTIKSpeedTest-UI');
 
     if (svgObj) {
         // If already loaded (rare race condition)
@@ -107,7 +107,7 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         }
     } else {
-        console.error("OpenSpeedTest-UI object not found!");
+        console.error("iCafeTIKSpeedTest-UI object not found!");
     }
 
     function redirectToResults(data) {
