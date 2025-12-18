@@ -82,10 +82,12 @@
 
             <div class="action-buttons">
                 <button onclick="window.location.href='/'" class="btn-restart">Test Again</button>
+                <button id="btn-save-image" class="btn-restart" style="background-color: #4CAF50;">Save Image</button>
             </div>
         </div>
     </div>
 
+    <script src="assets/js/html2canvas.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const params = new URLSearchParams(window.location.search);
@@ -108,6 +110,21 @@
 
             const now = new Date();
             document.getElementById('res-date').textContent = now.toLocaleString('en-US', { dateStyle: 'medium', timeStyle: 'short' });
+
+            // Download Image Logic
+            document.getElementById('btn-save-image').addEventListener('click', () => {
+                const element = document.querySelector('.result-card');
+                html2canvas(element, {
+                    scale: 2, // High resolution
+                    backgroundColor: '#ffffff', // Ensure white background
+                    useCORS: true
+                }).then(canvas => {
+                    const link = document.createElement('a');
+                    link.download = 'speedtest-result.png';
+                    link.href = canvas.toDataURL('image/png');
+                    link.click();
+                });
+            });
         });
     </script>
 </body>

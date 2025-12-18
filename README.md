@@ -2,55 +2,65 @@
 
 A lightweight, privacy-focused, and mobile-optimized HTML5 Network Performance Estimation Tool based on OpenSpeedTest™.
 
-## Features
+## Key Features
 
-- **Dynamic Units**: Automatically switches between **Mbps** and **Gbps** based on speed (Smart Unit Switching).
-- **Privacy First**: Zero external calls or redirects. Strictly self-hosted and secure against data exfiltration.
-- **Mobile Optimized**: Responsive design with a full-screen, native-app feel on mobile devices.
-- **Clean UI**: Modern aesthetic with SVG vector icons and precise layout.
-- **Accurate Reporting**: Real-time User IP extraction and precise Jitter/Ping measurement.
-- **Easy Deployment**: Ready for Docker, Node.js, or any static web server (Nginx/Apache).
+- **🚀 Dynamic Units**: Automatically switches between **Mbps** and **Gbps** (Smart Unit Switching) for high-speed networks.
+- **📷 Save Result Image**: One-click download of your test results as a high-quality PNG image.
+- **🔒 Privacy First**: Zero external calls, analytics, or redirects. Your data stays on your network.
+- **📱 Mobile Optimized**: Responsive design that feels like a native app on smartphones and tablets.
+- **🎯 Accurate Reporting**:
+    - **Real-Client IP Detection**: Supports `X-Forwarded-For` to identify clients behind Reverse Proxies/Docker.
+    - **Server Hostname Display**: Correctly shows the IP or Domain you are testing against.
+- **🎨 Modern UI**: Clean aesthetic with SVG vector icons, dark mode support, and precise layout.
+- **📦 Easy Deployment**: Docker, Node.js, or any static web server (Nginx/Apache).
 
 ## Installation & Usage
 
 ### Option 1: Docker (Recommended)
 
-1. Build the image:
+1. **Build the image**:
    ```bash
    docker build -t speedtest .
    ```
-2. Run the container:
-   ```bash
-   docker run -d -p 8080:80 speedtest
-   ```
-3. Open `http://localhost:8080` in your browser.
 
-### Option 2: Node.js (Local Development)
+2. **Run the container**:
+   ```bash
+   # Map port 8080 (host) to 80 (container)
+   docker run -d -p 8080:80 --name speedtest speedtest
+   ```
+
+3. **Access**: Open `http://localhost:8080` (or your server's IP:8080).
+
+### Option 2: Node.js (Local Testing)
 
 1. Ensure Node.js is installed.
 2. Run the local server:
    ```bash
    node local-server.js
    ```
-3. Open `http://localhost:8081` in your browser.
+3. Access: Open `http://localhost:8081`.
 
 ### Option 3: Static Web Server (Nginx/Apache)
 
 Copy all files to your web server's root directory (e.g., `/var/www/html`).
-If using Nginx, you can use the provided `nginx.conf` as a reference for handling large upload bodies and timeouts.
+*Note: Ensure your web server allows large request bodies (e.g., `client_max_body_size 35M;` in Nginx) for the upload test to function correctly.*
 
 ## Configuration
 
-- **`assets/js/config.js`**: Configure test parameters if needed.
-- **`nginx.conf`**: Nginx configuration for handling upload tests and CORS.
+- **`nginx.conf`**: Pre-configured Nginx setup handling:
+    - Large upload bodies
+    - Real IP forwarding (`X-Forwarded-For`)
+    - CORS headers
+- **`assets/js/config.js`**: Advanced test parameters.
 
-## Project Structure
+## Troubleshooting
 
-- `index.html`: Main application entry point.
-- `result.html`: Post-test summary page.
-- `assets/`: Contains JS, CSS, fonts, and images.
-- `local-server.js`: Simple Node.js server script.
-- `Dockerfile`: Container configuration.
+- **Carrier shows "Unknown" or Gateway IP?**
+    - This project is configured to read `X-Forwarded-For`. Ensure your Reverse Proxy passes this header.
+    - If running on Docker Desktop, this is normal unless running in `--network host` mode, but the app will try to display the best available guess.
+    
+- **"Save Image" button missing?**
+    - You might be viewing a cached version. Hard refresh (`Ctrl+F5`) or rebuild your Docker image to ensure the latest `result.html` is loaded.
 
 ## License
 
