@@ -586,6 +586,7 @@ window.onload = function () {
     var myhostName = location.hostname;
     var key;
     var TestServerip;
+    window.OST_ServerIP = location.hostname || "Localhost"; // Default to hostname
     var downloadSpeed;
     var uploadSpeed;
     var dataUsedfordl;
@@ -889,7 +890,18 @@ window.onload = function () {
         Show.showStatus("Fetching Server Info..");
         ServerConnect(6);
       }
+      function checkNetworkInfo() {
+        console.log("Checking Network Info (Client IP)...");
+        ServerConnect(7); // Check Client IP
+        // ServerConnect(1); // Check Server Info (Optional, usually 1 defaults to local)
+      }
+
       if (launch === true) {
+        // Fetch IP on startup
+        setTimeout(function () {
+          checkNetworkInfo();
+        }, 100);
+
         if (SelectTest === "Ping") {
           testRun();
         } else if (SelectTest === "Download") {
@@ -1433,6 +1445,8 @@ window.onload = function () {
           }
           if (auth == 1) {
             TestServerip = return_data;
+            window.OST_ServerIP = return_data;
+            console.log("Server IP Fetch Success: " + return_data);
           }
           if (auth == 3) {
             setTimeout(function () {
@@ -1446,6 +1460,7 @@ window.onload = function () {
             runTasks();
           }
           if (auth == 7) {
+            console.log("IP Fetch Success: " + return_data);
             Show.YourIP.el.textContent = return_data;
           }
         }

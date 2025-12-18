@@ -21,9 +21,9 @@ A lightweight, privacy-focused, and mobile-optimized HTML5 Network Performance E
    ```
 2. Run the container:
    ```bash
-   docker run -d -p 80:80 speedtest
+   docker run -d -p 8080:80 speedtest
    ```
-3. Open `http://localhost` in your browser.
+3. Open `http://localhost:8080` in your browser.
 
 ### Option 2: Node.js (Local Development)
 

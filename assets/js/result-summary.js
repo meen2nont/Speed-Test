@@ -73,6 +73,8 @@ document.addEventListener('DOMContentLoaded', function () {
                         let userIp = getSvgElementText('YourIP');
                         if (!userIp || userIp.includes('SpeedTest by')) userIp = 'Unknown';
 
+                        let serverIp = window.OST_ServerIP || 'Localhost';
+
                         redirectToResults({
                             download: finalDl,
                             dlUnit: dlUnit,
@@ -80,7 +82,8 @@ document.addEventListener('DOMContentLoaded', function () {
                             ulUnit: ulUnit,
                             ping: finalPing,
                             jitter: finalJitter,
-                            ip: userIp
+                            ip: userIp,
+                            server: serverIp
                         });
                         isFinished = true;
                     }, 3000);
@@ -109,7 +112,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function redirectToResults(data) {
         // Redirect to result.html with query parameters
-        const url = `result.html?dl=${encodeURIComponent(data.download)}&dlUnit=${encodeURIComponent(data.dlUnit)}&ul=${encodeURIComponent(data.upload)}&ulUnit=${encodeURIComponent(data.ulUnit)}&ping=${encodeURIComponent(data.ping)}&jitter=${encodeURIComponent(data.jitter)}&ip=${encodeURIComponent(data.ip)}`;
+        const url = `result.html?dl=${encodeURIComponent(data.download)}&dlUnit=${encodeURIComponent(data.dlUnit)}&ul=${encodeURIComponent(data.upload)}&ulUnit=${encodeURIComponent(data.ulUnit)}&ping=${encodeURIComponent(data.ping)}&jitter=${encodeURIComponent(data.jitter)}&ip=${encodeURIComponent(data.ip)}&server=${encodeURIComponent(data.server)}`;
         window.location.href = url;
     }
 });

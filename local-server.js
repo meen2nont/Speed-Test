@@ -31,6 +31,13 @@ const server = http.createServer((req, res) => {
         return;
     }
 
+    // Handle /ip route
+    if (req.url === '/ip') {
+        res.writeHead(200, { 'Content-Type': 'text/plain' });
+        res.end(req.socket.remoteAddress);
+        return;
+    }
+
     // Handle Upload Test (POST /upload)
     // OpenSpeedTest sends data to /upload, we just need to accept it efficiently.
     if (req.url.startsWith('/upload') && req.method === 'POST') {

@@ -6,6 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Speed Test Result</title>
     <link href="assets/css/result-summary.css" rel="stylesheet" type="text/css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta property="og:image" content="assets/images/img.png" />
+
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/icons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/icons/favicon-16x16.png">
+    <link rel="manifest" href="assets/images/icons/site.webmanifest">
+    <link rel="mask-icon" href="assets/images/icons/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="shortcut icon" href="assets/images/icons/favicon.ico">
     <style>
         /* CSS moved to assets/css/result-summary.css */
     </style>
@@ -79,13 +90,20 @@
         document.addEventListener('DOMContentLoaded', () => {
             const params = new URLSearchParams(window.location.search);
             document.getElementById('res-download').textContent = params.get('dl') || '--';
-            document.getElementById('res-download-unit').textContent = params.get('dlUnit') || 'Mbps';
+            if (params.has('dlUnit')) {
+                document.getElementById('res-download-unit').textContent = params.get('dlUnit');
+            } else {
+                document.getElementById('res-download-unit').textContent = 'Mbps';
+            }
 
             document.getElementById('res-upload').textContent = params.get('ul') || '--';
             document.getElementById('res-upload-unit').textContent = params.get('ulUnit') || 'Mbps';
 
             document.getElementById('res-ping').textContent = params.get('ping') || '--';
             document.getElementById('res-jitter').textContent = params.get('jitter') || '--';
+            if (params.has('server')) {
+                document.getElementById('res-server-name').textContent = params.get('server');
+            }
             document.getElementById('res-carrier').textContent = params.get('ip') || 'Private Network';
 
             const now = new Date();

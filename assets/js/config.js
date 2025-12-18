@@ -82,10 +82,13 @@ var enableRun = true;
 
 
 function ostOnload() {
-    console.log("OpenSpeedTest.com V2.5.4 Loaded!")
     console.log("Now Press the Start Button or HIT Enter.")
     console.log("The secret to living happy is giving happiness. Have a wonderful day.")
 
 }
 
+
 var openChannel = "dev";
+var get_IP = "/ip";
+var OpenSpeedTestdb = "";
+var webIP = "/ip";
